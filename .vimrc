@@ -13,7 +13,7 @@ set antialias
 " Airline
 " cd bundle/powerline-fonts
 " ./install.sh (installs "Sauce Code Powerline Light")
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+set rtp+=~/vim-settings/.vim/bundle/powerline/powerline/bindings/vim
 set guifont=Sauce\ Code\ Powerline\ Light:h16
 
 " disable vim-markdown folder
@@ -79,6 +79,10 @@ au! BufRead,BufNewFile .jslintrc    setfiletype javascript
 au! BufRead,BufNewFile *.mustache   setfiletype mustache
 au! BufRead,BufNewFile *.co         setfiletype coffee
 au! BufRead,BufNewFile *.less       setfiletype less
+au! BufRead,BufNewFile *.trigger    setfiletype java
+au! BufRead,BufNewFile *.cls        setfiletype java
+au! BufRead,BufNewFile *.layout     setfiletype xml
+
 
 " Indentation settings..
 set autoindent
