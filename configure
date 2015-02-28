@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # init the submodules
-git submodule update
+git submodule update --init
 git submodule foreach git pull
 
 # For JSHint/CoffeeScript Plugins
 npm install -g jshint coffee-script coffeelint
 
 # Install patched powerline fonts
-./.vim/bundle/powerline-fonts/install.sh
+.vim/bundle/powerline-fonts/install.sh

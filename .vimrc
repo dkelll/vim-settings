@@ -13,7 +13,7 @@ set antialias
 " Airline
 " cd bundle/powerline-fonts
 " ./install.sh (installs "Sauce Code Powerline Light")
-set rtp+=~/vim-settings/.vim/bundle/powerline/powerline/bindings/vim
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set guifont=Sauce\ Code\ Powerline\ Light:h16
 
 " disable vim-markdown folder
@@ -27,6 +27,11 @@ let g:spotify_country_code = 'US'
 
 " remove trailing spaces
 command TRAIL %s/\s\+$//
+
+" enable mouse functionality
+if has('mouse')
+    set mouse=a
+  endif
 
 " html tidy - Meteor
 let g:syntastic_html_tidy_ignore_errors = [
@@ -67,6 +72,9 @@ set nowrap " Disable wrapping
 set hidden " Allow switching between buffers without saving .
 set number " Always show line numbers.
 set title " Set xterm title.
+set magic " For regular expressions
+set showmatch " shows matching brackets when cursor is on it
+set mat=2 " How many tenths of a second to blink when matching the brackets
 
 " Turn off backups, etc.
 set nobackup
