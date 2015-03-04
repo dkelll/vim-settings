@@ -2,8 +2,8 @@
 set nocompatible
 
 " pathogen
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+runtime autoload/pathogen.vim
+execute pathogen#infect()
 
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set guioptions-=r " macvim: remove right scrollbar
@@ -57,8 +57,8 @@ nnoremap <silent> <C-n> :CtrlPBuffer<CR>
 " color and syntax settings
 set background=dark
 colorscheme base16-tomorrow
-" set t_Co=256
-" colors twilighted
+  set t_Co=256
+  colors twilighted
 syntax on
 
 set backspace=indent,eol,start " backspacing support
