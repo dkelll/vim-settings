@@ -2,12 +2,12 @@
 set nocompatible
 
 " pathogen
-runtime autoload/pathogen.vim
+runtime .vim/autoload/pathogen.vim
 execute pathogen#infect()
 
 set encoding=utf-8 " Necessary to show Unicode glyphs
-set guioptions-=r " macvim: remove right scrollbar
-set guioptions-=L " macvim: remove left scrollbar from nerdtree
+"set guioptions-=r " macvim: remove right scrollbar
+"set guioptions-=L " macvim: remove left scrollbar from nerdtree
 set antialias
 
 " Airline
@@ -56,9 +56,8 @@ nnoremap <silent> <C-n> :CtrlPBuffer<CR>
 
 " color and syntax settings
 set background=dark
-colorscheme base16-tomorrow
-  set t_Co=256
-  colors twilighted
+colorscheme base16-google
+set t_Co=256
 syntax on
 
 set backspace=indent,eol,start " backspacing support
