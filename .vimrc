@@ -1,164 +1,59 @@
-" keep it awesome- custom file warrants this
-set nocompatible
+" Basics
+set nocompatible " explicitly get out of vi-compatible mode
+filetype on " I think this pulls filetype
+syntax on " enable syntax highlighting
 
 " pathogen
-runtime .vim/autoload/pathogen.vim
-execute pathogen#infect()
+set rtp^=.vim/autoload/pathogen.vim
+ execute pathogen#infect()
 
+" General
+set history=9999 " large history
+set formatoptions+=n " recognize numbered lists
+set formatlistpat=^\\s*\\(\\d\\\|[-*]\\)\\+[\\]:.)}\\t\ ]\\s* "and bullets, too
+set nomore " turns off pagination; no 'More' prompts
 set encoding=utf-8 " Necessary to show Unicode glyphs
-"set guioptions-=r " macvim: remove right scrollbar
-"set guioptions-=L " macvim: remove left scrollbar from nerdtree
-set antialias
+set backspace=2	" more powerful backspacing
+set ignorecase " Ignore case when searching
+set smartcase " When searching try to be smart about cases
+set hlsearch " Highlight search resultsh
+set ruler " Always set the mouse cursor position
+set number " Always show line numbers
+set magic " For regular expressions
+set showmatch " shows matching brackets when cursor is on it
+set mat=3 " How many tenths of a second to blink when matching the brackets
+set nobackup " Turn off backups
+set nowb " More turning off of backups
+set noswapfile " Turn off swap file
+set autoread " Auto-show changes if the file is modded outside of vim
+set incsearch " be like search in modern browsers
 
-" Airline
-" cd bundle/powerline-fonts
-" ./install.sh (installs "Sauce Code Powerline Light")
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-set guifont=Sauce\ Code\ Powerline\ Light:h16
+" Map jj to replace escape key
+:imap jj <Esc>
 
-" disable vim-markdown folder
-let g:vim_markdown_folding_disabled=1
+command TRAIL %s/\s\+$// " remove trailing spaces
 
-" emmet
-let g:user_emmet_leader_key='<C-i>'
+" color and syntax settings
+" colorscheme base16-tomorrow
+colors twilighted
+set background=dark " use a dark background in the buffer
 
-" spotify
-let g:spotify_country_code = 'US'
-
-" remove trailing spaces
-command TRAIL %s/\s\+$//
+" Map space bar to / (search)
+map <space> /
 
 " enable mouse functionality
 if has('mouse')
     set mouse=a
   endif
 
-" html tidy - Meteor
-let g:syntastic_html_tidy_ignore_errors = [
-    \ '<form> lacks "action" attribute',
-    \ '<template> is not recognized!',
-    \ 'discarding unexpected <template>',
-    \ 'discarding unexpected </template>'
-  \ ]
-
-" gist-vim
-let g:gist_clip_command = 'pbcopy' " pbcopy for OSX Only
-let g:gist_detect_filetype = 1
-let g:gist_post_private = 1
-
-" ctrl-p
-" TODO: clear cache on pull up? map new key?
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_show_hidden = 1
-set wildignore+=*.git/*,*node_modules/*,*coverage/*,*bower_components/*,*.vim/bundle,*tmp/*,*.keep
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-nnoremap <silent> <C-n> :CtrlPBuffer<CR>
-
-" color and syntax settings
-set background=dark
-colorscheme base16-google
-set t_Co=256
-syntax on
-
-set backspace=indent,eol,start " backspacing support
-set nofoldenable " Disable folding
-set ignorecase " Ignore case when searching
-set smartcase " When searching try to be smart about cases
-set hlsearch " Highlight search resultsh
-set incsearch " be like search in modern browsers
-set ruler " Always set the mouse cursor position
-set nowrap " Disable wrapping
-set hidden " Allow switching between buffers without saving .
-set number " Always show line numbers.
-set title " Set xterm title.
-set magic " For regular expressions
-set showmatch " shows matching brackets when cursor is on it
-set mat=2 " How many tenths of a second to blink when matching the brackets
-
-" Turn off backups, etc.
-set nobackup
-set nowb
-set noswapfile
-
-" Custom file extensions..
-au! BufRead,BufNewFile .jshintrc    setfiletype javascript
-au! BufRead,BufNewFile .jslintrc    setfiletype javascript
-au! BufRead,BufNewFile *.mustache   setfiletype mustache
-au! BufRead,BufNewFile *.co         setfiletype coffee
-au! BufRead,BufNewFile *.less       setfiletype less
-au! BufRead,BufNewFile *.trigger    setfiletype java
-au! BufRead,BufNewFile *.cls        setfiletype java
-au! BufRead,BufNewFile *.layout     setfiletype xml
-
-
-" Indentation settings..
-set autoindent
-filetype plugin indent on
-autocmd FileType * set tabstop=2|set shiftwidth=2
-autocmd FileType hs set tabstop=2|set shiftwidth=2
-autocmd FileType text setlocal textwidth=78 " for git commits
-set expandtab
-
-" Map space to / (search)
-map <space> /
-map <silent> <leader><cr> :noh<cr>
-
-"  Easier way to move between windows.
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 "  NERD Tree
+" enable via 'mm'
 let NERDTreeShowHidden=1
-" nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 nnoremap <silent> mm :NERDTreeToggle<CR>
-
-" Map jj to replace the escape key.
-:imap jj <Esc>
-
-" Spellcheck en_CA
-map <leader>s :setlocal spell spelllang=en_us<CR>
-map <leader>S :setlocal nospell<CR>
 
 " Load in a custom config in CWD?
 if filereadable(".vim.custom")
     so .vim.custom
 endif
 
-" Visual mode related..
-" In visual mode when you press * or # to search for the current selection
-vnoremap <silent> * :call VisualSearch('f')<CR>
-vnoremap <silent> # :call VisualSearch('b')<CR>
-
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-" From an idea by Michael Naumann
-function! VisualSearch(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-" Need +virtualedit to paste in insert mode.
-exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
-exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
-imap <S-Insert> <C-V>
-vmap <S-Insert> <C-V>
+" Cool git thing from tpope:  https://github.com/tpope/vim-fugitive
