@@ -1,105 +1,36 @@
-# There Be Wizards In Here!
+# My current vim setup
 
-My current vim setup.
-
-Inspired by [gtanner's vim config](https://github.com/gtanner/tinyhippos.vimrc).
-Uses [Pathogen](https://github.com/tpope/vim-pathogen).
-See [Bundles](https://github.com/brentlintner/vim-settings/tree/master/.vim/bundle).
+Uses [Pathogen](https://github.com/tpope/vim-pathogen).  I may convert to Vundle sometime soon, just to compare the two.
 
 ## Requirements
-
 * Vim
 * Git
 * NodeJS/NPM
-* Ack
-
-## Installation
-
-```bash
- # clone the repo into a local directory of your choice (~ used in this example)
- cd ~
- git clone git://github.com/fourq/vim-settings.git
- ln -s vim-settings/.vimrc
- ln -s vim-settings/.vim
- cd vim-settings
- ./configure
-```
-
-## Submodules
-
-This setup uses several git repositories as submodules.  The configure script sets up the submodules for you initially but you might need/want to pull the latest versions of each submodule at some point.  To pull them all at once use the command below.
-
-```bash
- # cd to install directory (~/vim-settings for this example)
- cd ~/vim-settings
- git submodule foreach git pull
-```
 
 ## Common Commands
-
-`space`
-
-Search.
-
-`jj`
-
-Escape insert mode.
-
-`\s,\S`
-
-Toggle spell check.
-
-`ctrl-p`
-
-Runs :CtrlPMixed.
-
-`ctrl-n`
-
-Runs :CtrlPBuffer.
-
-`ctrl-e+f`
-
-Runs :NerdTreeToggle.
-
-`ctrl-h,j,k,l`
-
-Move around windows.
-
-`ctrl-V`
-
-Paste from clipboard.
-
-`Ack WORD`
-
-Search and display entries.
-
-## Syntastic
-
-The `configure` script handles installing some packages.
-
-However, be sure to install them:
-
-https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
+Search: `space` <br>
+Escape insert mode: `jj` <br>
+Toggle spell check: `\s,\S` <br>
+Runs :CtrlPMixed: `ctrl-p` <br>
+Runs :CtrlPBuffer: `ctrl-n` <br>
+Runs :NerdTreeToggle: `ctrl-e+f` <br>
+Move around windows: `ctrl-h,j,k,l` <br>
+Search and display entries: `Ack WORD` <br>
 
 ## Ack Plugin
-
-Install via: http://beyondgrep.com/install
-
-You might also need to:
-
-    alias ack="ack-grep"
-
-In your `.bashrc`.
+Install via: http://beyondgrep.com/install <br>
+You might also need to put `alias ack="ack-grep"` in your `.bashrc` file.
 
 ## Adding Custom Commands Per Directory
-
 If you have a `.vim.custom` file in the CWD, it will be evaluated (last).
+
+## Desktop Wallpaper
+I attended a js user group meetup where [@johnmosesman](https://twitter.com/johnmosesman/status/602852544952467456) demo'd his vim setup, which included a fantastic desktop wallpaper piece.  Set this as your desktop for a quick reference to common vim commands.
+![alt text](/vimgbfullsize.png?raw=true "vim desktop wallpaper")
 
 ## Other References
 
 * http://yavin4.anshul.info/2006/05/18/spell-check-in-vim-7/
 * http://vim.cybermirror.org/runtime/vimrc_example.vim
-* http://vim.cybermirror.org/runtime/mswin.vim
 * http://amix.dk/vim/vimrc.html
-* http://www.fprintf.net/vimCheatSheet.html
 * http://vim.wikia.com/wiki/Vim_Tips_Wiki
