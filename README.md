@@ -21,12 +21,14 @@ Search and display entries: `Ack WORD` <br>
 Install via: http://beyondgrep.com/install <br>
 You might also need to put `alias ack="ack-grep"` in your `.bashrc` file.
 
+
 ## Adding Custom Commands Per Directory
 If you have a `.vim.custom` file in the CWD, it will be evaluated (last).
 
 ## Desktop Wallpaper
 I attended a js user group meetup where [@johnmosesman](https://twitter.com/johnmosesman/status/602852544952467456) demo'd his vim setup, which included a fantastic desktop wallpaper piece.  Set this as your desktop for a quick reference to common vim commands.
-[![vim background](img/vimgbfullsize.png?raw=true)]
+
+![vim background](img/vimbgfullsize.png)
 
 ## Other References
 
