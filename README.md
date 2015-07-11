@@ -26,7 +26,7 @@ If you have a `.vim.custom` file in the CWD, it will be evaluated (last).
 
 ## Desktop Wallpaper
 I attended a js user group meetup where [@johnmosesman](https://twitter.com/johnmosesman/status/602852544952467456) demo'd his vim setup, which included a fantastic desktop wallpaper piece.  Set this as your desktop for a quick reference to common vim commands.
-![alt text](https://github.com/dkelll/vim-settings/raw/master/img/vimgbfullsize.png)
+![alt text](img/vimgbfullsize.png?raw=true)
 
 ## Other References
 
